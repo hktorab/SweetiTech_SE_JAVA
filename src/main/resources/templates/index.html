@@ -22,6 +22,7 @@
                 <p   th:text="${'Model: '+products.productModel}"></p>
                 <p   th:text="${'Price: '+products.productPrice}"></p>
                 <a th:href="${'product/' + products.productId}" >Details</a>
+                <a th:href="${'delete/' + products.productId}" >Delete</a>
             </div>
         </div>
     </div>

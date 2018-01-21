@@ -17,7 +17,7 @@ public class HelloResource {
     @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping("/admin")
     public String securedHello() {
-        return "Secured Hello";
+        return "index";
     }
 
     @PreAuthorize("hasAnyRole('OTHERS')")

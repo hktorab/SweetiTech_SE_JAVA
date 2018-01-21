@@ -37,26 +37,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("**/secured/**").authenticated()
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
                 .and()
-                .formLogin()
-
-                .permitAll();
+                .formLogin().permitAll();
 
     }
 
 
     private PasswordEncoder getPasswordEncoder() {
-        return new PasswordEncoder() {
-            @Override
-            public String encode(CharSequence charSequence) {
+       return new PasswordEncoder() {
+           @Override
+           public String encode(CharSequence charSequence) {
                 return charSequence.toString();
             }
-
             @Override
-            public boolean matches(CharSequence charSequence, String s) {
-                return true;
+           public boolean matches(CharSequence charSequence, String s) {
+               return true;
             }
-        };
+       };
     }
+
+
 }
