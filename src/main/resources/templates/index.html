@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>product</title>
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" href="../static/bootstrap.css" />
+    <link rel="stylesheet" th:href="@{/style.css}" href="../static/style.css" />
+    <link rel="stylesheet" th:href="@{/bootstap.min.js}" href="../static/bootstrap.min.js" />
+</head>
+<body>
+<div class="container">
+
+
+    <div th:each="products : ${product}">
+        <div  class=" col-md-4" style="margin-top: 1vw;" >
+
+            <div class="browseWrapper">
+
+                <p th:text="${'Name: '+products.productName}"></p>
+                <p   th:text="${'Category: '+products.productCategory}"> </p>
+                <p   th:text="${'Model: '+products.productModel}"></p>
+                <p   th:text="${'Price: '+products.productPrice}"></p>
+                <a th:href="${'product/' + products.productId}" >Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
