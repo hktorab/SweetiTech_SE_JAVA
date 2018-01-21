@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Create New Product </title>
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" href="../static/bootstrap.css" />
+    <link rel="stylesheet" th:href="@{/AddProductForm.css}" href="../static/AddProductForm.css" />
+
+</head>
+<body style=" background:  #4CAF50">
+<div class="container">
+
+
+
+    <form id="contact" action="#" th:action="@{/addproduct}" th:object="${product}" method="POST">
+        <h2  style="text-align: center;"><b>Add Product</b></h2>
+        <input placeholder="id" type="text" th:field="*{productId}" required autofocus />
+        <input placeholder="Name" type="text" th:field="*{productName}" required autofocus/>
+        <select class="formCss" th:field="*{productCategory}">
+            <option th:each="Category : ${Category}" th:value="${Category}" th:text="${Category}">Product Category</option>
+        </select>
+        <input type="text" th:field="*{productModel}"   placeholder="Product Model" required autofocus/>
+        <input type="text" th:field="*{productPrice}"   placeholder="Product Price" required autofocus/>
+        <input type="submit" th:value="Submit"/>
+        <p class="copyright"></p>
+
+    </form>
+</div>
+</body>
+</html> 
