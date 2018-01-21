@@ -27,19 +27,17 @@ public class ProductController {
     @Autowired
     public ProductCategoryRepository productCategoryRepository;
 
-/*
-
     @RequestMapping(value = "/")
-    public String index() {
-        return "index";
-    }
-*/
-
-    @RequestMapping(value = "/show")
     public String showAll(Model model) {
+        model.addAttribute("product", productRepository.findAll());
+        // model.addAttribute( "count",productRepository.count());
+        return "index";
+
+    }
+    @RequestMapping(value = "/show")
+    public String showAlls(Model model) {
         model.addAttribute( "product",productRepository.findAll());
         // model.addAttribute( "count",productRepository.count());
-
         return "index";
     }
     @RequestMapping(value = "/product/{id}")
@@ -48,6 +46,8 @@ public class ProductController {
         model.addAttribute( "count",productRepository.count());
         return "ShowProduct";
     }
+
+
 
     @GetMapping(value = "/addproduct")
     public ModelAndView addProduct() {
@@ -62,13 +62,13 @@ public class ProductController {
     }
 
     private List<String> allProductCategory() {
-       List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
 //        list.add("MotherBoard");
 //        list.add("Ram");
 //        list.add("Graphics Card");
 
 
-            List<ProductCategory> list2=productCategoryRepository.findAll();
+        List<ProductCategory> list2=productCategoryRepository.findAll();
 
 
 
