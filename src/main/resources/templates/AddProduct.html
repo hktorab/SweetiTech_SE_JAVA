@@ -13,7 +13,7 @@
 
     <form id="contact" action="#" th:action="@{/addproduct}" th:object="${product}" method="POST">
         <h2  style="text-align: center;"><b>Add Product</b></h2>
-        <input placeholder="id" type="text" th:field="*{productId}" required autofocus />
+        <input placeholder="id" type="hidden" value="" th:value="${Count}" name="productId" required autofocus />
         <input placeholder="Name" type="text" th:field="*{productName}" required autofocus/>
         <select class="formCss" th:field="*{productCategory}">
             <option th:each="Category : ${Category}" th:value="${Category}" th:text="${Category}">Product Category</option>

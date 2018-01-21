@@ -2,6 +2,8 @@ package com.humayun.SweetTech.Controller;
 
 
 import com.humayun.SweetTech.Model.Product;
+import com.humayun.SweetTech.Model.ProductCategory;
+import com.humayun.SweetTech.Repository.ProductCategoryRepository;
 import com.humayun.SweetTech.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,8 @@ public class ProductController {
 
     @Autowired
     public ProductRepository productRepository;
-
+    @Autowired
+    public ProductCategoryRepository productCategoryRepository;
 
 /*
 
@@ -51,14 +54,27 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("AddProduct");
         modelAndView.addObject("product", new Product());
         modelAndView.addObject("Category", allProductCategory());
+        long id=productRepository.count();
+        id++;
+        System.out.println(id);
+        modelAndView.addObject("Count",id);
         return modelAndView;
     }
 
     private List<String> allProductCategory() {
-        List<String> list = new ArrayList<>();
-        list.add("MotherBoard");
-        list.add("RAM");
-        list.add("Graphics Card");
+       List<String> list = new ArrayList<>();
+//        list.add("MotherBoard");
+//        list.add("Ram");
+//        list.add("Graphics Card");
+
+
+            List<ProductCategory> list2=productCategoryRepository.findAll();
+
+
+
+        for (int i = 0; i < list2.size(); i++) {
+            list.add(list2.get(i).getProductCategoryName());
+        }
         return list;
     }
 
